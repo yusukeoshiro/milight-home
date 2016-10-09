@@ -7,6 +7,9 @@
 	<button type="button" class="btn btn-default" id="light-off">Turn Off</button>
 	<button type="button" class="btn btn-default" id="light-color-default">Default Color</button>
 	<button type="button" class="btn btn-default" id="light-dim">Dim</button>
+	<button type="button" class="btn btn-default" id="light-full">Full</button>
+	<button type="button" class="btn btn-default" id="light-sexy">Sexy</button>
+	<button type="button" class="btn btn-default" id="light-warm">Warm</button>
 
 
 </div>
@@ -47,6 +50,39 @@
 			  url: "/api/light/brightness",
 			  data: {
 			  	"brightness": 10
+			  }			  
+			});			
+		});
+		$("#light-full").on("click",function(){
+			$.ajax({
+			  type: "POST",
+			  url: "/api/light/brightness",
+			  data: {
+			  	"brightness": 100
+			  }			  
+			});			
+		});
+
+		$("#light-sexy").on("click",function(){
+			$.ajax({
+			  type: "POST",
+			  url: "/api/light/color",
+			  data: {
+			  	"r": 148,
+			  	"g": 0,
+			  	"b": 211
+			  }			  
+			});			
+		});
+
+		$("#light-warm").on("click",function(){
+			$.ajax({
+			  type: "POST",
+			  url: "/api/light/color",
+			  data: {
+			  	"r": 254,
+			  	"g": 239,
+			  	"b": 1
 			  }			  
 			});			
 		});

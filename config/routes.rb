@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   post "api/light/off",        :to => "light#off"
   post "api/light/color",      :to => "light#color"
   post "api/light/brightness", :to => "light#brightness"
+  post "api/alexa",            :to => "light#alexa"
 
 end

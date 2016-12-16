@@ -30,4 +30,9 @@ class LightController < ApplicationController
 		render :json => {}
 	end
 
+	def alexa
+		pp params
+
+	end
+
 end

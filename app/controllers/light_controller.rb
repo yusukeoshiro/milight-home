@@ -31,6 +31,8 @@ class LightController < ApplicationController
 	end
 
 	def alexa
+		p params["request"]["intent"]["name"]
+
 		pp params
 
 	end

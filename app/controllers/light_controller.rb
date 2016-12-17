@@ -73,7 +73,7 @@ class LightController < ApplicationController
 				"response" => {
 					"outputSpeech" => {
 						"type" => "PlainText",
-						"text" => "ok, adjusted to "+ brightness.to_s +"percent!",
+						"text" => "ok, adjusted to "+ brightness.to_s +"percent!"
 					},
 					"shouldEndSession" => true
 				}

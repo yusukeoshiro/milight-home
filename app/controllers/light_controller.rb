@@ -37,18 +37,34 @@ class LightController < ApplicationController
 
 		case intent
 		when "TurnOnLight"
-
+			$bridge.all_on	
 			response = {
 				"version" => "1.0",
 				"response" => {
 					"outputSpeech" => {
 						"type" => "PlainText",
-						"text" => "done and done!",
+						"text" => "ok, your light is now on!",
 					},
 					"shouldEndSession" => true
 				}
 			}
 			render :json => response.to_json
+
+		when "TurnOffLight"
+			$bridge.all_off
+			response = {
+				"version" => "1.0",
+				"response" => {
+					"outputSpeech" => {
+						"type" => "PlainText",
+						"text" => "ok, your light is now off!",
+					},
+					"shouldEndSession" => true
+				}
+			}
+			render :json => response.to_json
+
+
 
 		else
 		end

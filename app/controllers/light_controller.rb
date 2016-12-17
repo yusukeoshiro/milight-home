@@ -95,7 +95,7 @@ class LightController < ApplicationController
 				"response" => {
 					"outputSpeech" => {
 						"type" => "PlainText",
-						"text" => "ok, adjusted the color to #{r} #{g} #{b}!"
+						"text" => "ok, adjusted the color to #{r}, #{g}, #{b}!"
 					},
 					"shouldEndSession" => true
 				}

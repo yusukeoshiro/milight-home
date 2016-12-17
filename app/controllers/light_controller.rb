@@ -80,10 +80,6 @@ class LightController < ApplicationController
 			}
 			render :json => response.to_json
 
-
-		end
-
-
 		else
 		end
 

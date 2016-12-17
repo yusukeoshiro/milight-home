@@ -79,6 +79,21 @@ class LightController < ApplicationController
 			}
 			render :json => response.to_json
 
+
+		when "DefaultColor"
+			$bridge.white
+			response = {
+				"version" => "1.0",
+				"response" => {
+					"outputSpeech" => {
+						"type" => "PlainText",
+						"text" => "ok, set the color back to default!"
+					},
+					"shouldEndSession" => true
+				}
+			}
+			render :json => response.to_json
+
 		when "AdjustColor"
 			r = params["request"]["intent"]["slots"]["Red"]["value"].to_i
 			g = params["request"]["intent"]["slots"]["Green"]["value"].to_i

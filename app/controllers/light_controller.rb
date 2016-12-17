@@ -79,6 +79,29 @@ class LightController < ApplicationController
 			}
 			render :json => response.to_json
 
+		when "AdjustColor"
+			r = params["request"]["intent"]["slots"]["Red"]["value"].to_i
+			g = params["request"]["intent"]["slots"]["Green"]["value"].to_i
+			b = params["request"]["intent"]["slots"]["Blue"]["value"].to_i
+
+			if r == 100 && g == 100 && b == 100
+				$bridge.white
+			else
+				$bridge.color(Color::RGB.from_percentage(r, g, b))  
+			end
+
+			response = {
+				"version" => "1.0",
+				"response" => {
+					"outputSpeech" => {
+						"type" => "PlainText",
+						"text" => "ok, adjusted the color to #{r} #{g} #{b}!"
+					},
+					"shouldEndSession" => true
+				}
+			}
+			render :json => response.to_json	
+
 		else
 		end
 

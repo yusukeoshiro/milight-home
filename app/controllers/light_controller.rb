@@ -31,7 +31,29 @@ class LightController < ApplicationController
 	end
 
 	def alexa
-		p params["request"]["intent"]["name"]
+		intent = params["request"]["intent"]["name"]
+		
+		
+
+		case intent
+		when "TurnOnLight"
+
+			response = {
+				"version" => "1.0",
+				"response" => {
+					"outputSpeech" => {
+						"type" => "PlainText",
+						"text" => "done and done!",
+					},
+					"shouldEndSession" => true
+				}
+			}
+			render :json => response.to_json
+
+		else
+		end
+
+
 
 		pp params
 

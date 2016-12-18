@@ -66,7 +66,9 @@ class LightController < ApplicationController
 
 		when "AdjustBrightness"
 			brightness = params["request"]["intent"]["slots"]["Brightness"]["value"].to_i
-			$bridge.brightness(2 + 25 * (brightness / 100))   # 明るさ最小
+			brightness = params["brightness"].to_i 
+			brightness_tmp = 2 + 25 * (brightness / 100)
+			$bridge.brightness(brightness_tmp)   # 明るさ最小
 			response = {
 				"version" => "1.0",
 				"response" => {

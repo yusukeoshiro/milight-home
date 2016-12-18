@@ -132,6 +132,33 @@ class LightController < ApplicationController
 			}
 			render :json => response.to_json	
 
+		when "TurnOffAC"
+			send_ir_signal( "IR_AC_OFF" )
+			response = {
+				"version" => "1.0",
+				"response" => {
+					"outputSpeech" => {
+						"type" => "PlainText",
+						"text" => "ok, AC is off!"
+					},
+					"shouldEndSession" => true
+				}
+			}
+			render :json => response.to_json	
+		when "TurnOnAC"
+			send_ir_signal( "IR_AC_ON" )
+			response = {
+				"version" => "1.0",
+				"response" => {
+					"outputSpeech" => {
+						"type" => "PlainText",
+						"text" => "ok, AC is on!"
+					},
+					"shouldEndSession" => true
+				}
+			}
+			render :json => response.to_json	
+
 		else
 		end
 

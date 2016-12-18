@@ -142,7 +142,7 @@ class LightController < ApplicationController
 	end
 
 
-	def send_ir_signal( sig_name ){
+	def send_ir_signal( sig_name )
 		uri = URI.parse(ENV["IR_KIT_ENDPOINT"])
 		https = Net::HTTP.new(uri.host, uri.port)
 		https.use_ssl = false 
@@ -151,6 +151,6 @@ class LightController < ApplicationController
 		req["X-Requested-With"] = "curl"
 		req.body = ENV[sig_name]
 		res = https.request(req)
-	}
+	end 
 
 end

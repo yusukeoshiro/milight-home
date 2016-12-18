@@ -37,7 +37,8 @@ class LightController < ApplicationController
 
 		case intent
 		when "TurnOnLight"
-			$bridge.all_on	
+			$bridge.all_on
+			$bridge.brightness(25)
 			response = {
 				"version" => "1.0",
 				"response" => {

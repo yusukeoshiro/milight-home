@@ -159,6 +159,22 @@ class LightController < ApplicationController
 			}
 			render :json => response.to_json	
 
+		when "TurnOffEverything"
+			send_ir_signal( "IR_AC_OFF" )
+			$bridge.all_off
+			response = {
+				"version" => "1.0",
+				"response" => {
+					"outputSpeech" => {
+						"type" => "PlainText",
+						"text" => "ok, I've turned off everything!"
+					},
+					"shouldEndSession" => true
+				}
+			}
+			render :json => response.to_json				
+
+
 		else
 		end
 

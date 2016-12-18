@@ -12,7 +12,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem "limitless-led"
-gem 'dotenv-rails'
 gem 'json'  
 gem 'rails_12factor', group: :production
 
@@ -20,6 +19,7 @@ gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'dotenv-rails'
 end
 
 group :development do

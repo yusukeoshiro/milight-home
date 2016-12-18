@@ -117,6 +117,21 @@ class LightController < ApplicationController
 			}
 			render :json => response.to_json	
 
+
+		when "ToggleTV"
+			send_ir_signal( "IR_TV_TOGGLE" )
+			response = {
+				"version" => "1.0",
+				"response" => {
+					"outputSpeech" => {
+						"type" => "PlainText",
+						"text" => "ok, TV is toggled!"
+					},
+					"shouldEndSession" => true
+				}
+			}
+			render :json => response.to_json	
+
 		else
 		end
 
@@ -125,5 +140,17 @@ class LightController < ApplicationController
 		pp params
 
 	end
+
+
+	def send_ir_signal( sig_name ){
+		uri = URI.parse(ENV["IR_KIT_ENDPOINT"])
+		https = Net::HTTP.new(uri.host, uri.port)
+		https.use_ssl = false 
+		req = Net::HTTP::Post.new(uri.request_uri)
+		req["Content-Type"] = "text/plain"
+		req["X-Requested-With"] = "curl"
+		req.body = ENV[sig_name]
+		res = https.request(req)
+	}
 
 end

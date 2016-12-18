@@ -65,8 +65,7 @@ class LightController < ApplicationController
 			render :json => response.to_json
 
 		when "AdjustBrightness"
-			brightness = params["request"]["intent"]["slots"]["Brightness"]["value"].to_i
-			brightness = params["brightness"].to_i 
+			brightness = params["request"]["intent"]["slots"]["Brightness"]["value"].to_i			
 			brightness_tmp = 2 + 25 * (brightness / 100)
 			$bridge.brightness(brightness_tmp)   # 明るさ最小
 			response = {

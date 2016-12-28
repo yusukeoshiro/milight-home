@@ -25,6 +25,7 @@ class LightController < ApplicationController
 		intent = params["request"]["intent"]["name"]
 
 		case intent
+
 		when "TurnOnLight"
 			$bridge.all_on
 			$bridge.brightness(25)			
@@ -61,7 +62,13 @@ class LightController < ApplicationController
 		when "TurnOffEverything"
 			send_ir_signal( "IR_AC_OFF" )
 			$bridge.all_off			
-			render :json => alexa_response( "ok, I've turned off everything!" )				
+			render :json => alexa_response( "ok, I've turned off everything!" )			
+		when "TurnOnEverything"
+			$bridge.all_on
+			$bridge.brightness(25)			
+			send_ir_signal( "IR_AC_ON" )			
+			render :json => alexa_response("Welcome home!")
+
 		else
 			render :json => alexa_response( "Command was not found" )				
 		end

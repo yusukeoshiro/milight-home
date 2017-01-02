@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
 <style type="text/css">
 	.btn{
 		width: 100%;
@@ -10,21 +12,21 @@
 
 	<h1>Controller Panel</h1>
 
-
+	<hr>
 	<h3>Lights</h3>
-	<button type="button" class="btn btn-primary" id="light-on">Turn On</button>
-	<button type="button" class="btn btn-default" id="light-off">Turn Off</button>
-	<button type="button" class="btn btn-default" id="light-color-default">Default Color</button>
-	<button type="button" class="btn btn-default" id="light-dim">Dim</button>
-	<button type="button" class="btn btn-default" id="light-full">Full</button>
-	<button type="button" class="btn btn-default" id="light-sexy">Sexy</button>
-	<button type="button" class="btn btn-default" id="light-warm">Warm</button>
+	<button type="button" class="btn btn-primary animated" id="light-on">Turn On</button>
+	<button type="button" class="btn btn-default animated" id="light-off">Turn Off</button>
+	<button type="button" class="btn btn-default animated" id="light-color-default">Default Color</button>
+	<button type="button" class="btn btn-default animated" id="light-dim">Dim</button>
+	<button type="button" class="btn btn-default animated" id="light-full">Full</button>
+	<button type="button" class="btn btn-default animated" id="light-sexy">Sexy</button>
+	<button type="button" class="btn btn-default animated" id="light-warm">Warm</button>
 
 	<hr>
 	<h3>IR</h3>
-	<button type="button" class="btn btn-primary" id="ir-ac-on">AC On</button>
-	<button type="button" class="btn btn-default" id="ir-ac-off">AC Off</button>
-	<button type="button" class="btn btn-default" id="ir-tv-toggle">TV Toggle</button>
+	<button type="button" class="btn btn-primary animated" id="ir-ac-on">AC On</button>
+	<button type="button" class="btn btn-default animated" id="ir-ac-off">AC Off</button>
+	<button type="button" class="btn btn-default animated" id="ir-tv-toggle">TV Toggle</button>
 	
 
 </div>
@@ -34,21 +36,36 @@
 	
 	$(function(){
 		$("#light-on").on("click",function(){
+			$button = $(this);
+			$(this).removeClass("pulse");
+
 			$.ajax({
 			  type: "POST",
 			  url: "/api/light/on",
-			  data: {}			  
+			  data: {},
+			  complete: function(){			  	
+			  	$button.addClass("pulse");			  	
+			  }
 			});
 
 		});
 		$("#light-off").on("click",function(){
+			$button = $(this);
+			$(this).removeClass("pulse");
+			
 			$.ajax({
 			  type: "POST",
 			  url: "/api/light/off",
-			  data: {}			  
+			  data: {},
+			  complete: function(){			  	
+			  	$button.addClass("pulse");			  	
+			  }
 			});			
 		});
 		$("#light-color-default").on("click",function(){
+			$button = $(this);
+			$(this).removeClass("pulse");
+			
 			$.ajax({
 			  type: "POST",
 			  url: "/api/light/color",
@@ -56,29 +73,47 @@
 			  	"r": 100,
 			  	"g": 100,
 			  	"b": 100
+			  },
+			  complete: function(){			  	
+			  	$button.addClass("pulse");			  	
 			  }			  
 			});			
 		});
 		$("#light-dim").on("click",function(){
+			$button = $(this);
+			$(this).removeClass("pulse");
+			
 			$.ajax({
 			  type: "POST",
 			  url: "/api/light/brightness",
 			  data: {
 			  	"brightness": 10
+			  },
+			  complete: function(){			  	
+			  	$button.addClass("pulse");			  	
 			  }			  
 			});			
 		});
 		$("#light-full").on("click",function(){
+			$button = $(this);
+			$(this).removeClass("pulse");
+			
 			$.ajax({
 			  type: "POST",
 			  url: "/api/light/brightness",
 			  data: {
 			  	"brightness": 100
+			  },
+			  complete: function(){			  	
+			  	$button.addClass("pulse");			  	
 			  }			  
 			});			
 		});
 
 		$("#light-sexy").on("click",function(){
+			$button = $(this);
+			$(this).removeClass("pulse");
+			
 			$.ajax({
 			  type: "POST",
 			  url: "/api/light/color",
@@ -86,11 +121,17 @@
 			  	"r": 148,
 			  	"g": 0,
 			  	"b": 211
+			  },
+			  complete: function(){			  	
+			  	$button.addClass("pulse");			  	
 			  }			  
 			});			
 		});
 
 		$("#light-warm").on("click",function(){
+			$button = $(this);
+			$(this).removeClass("pulse");
+			
 			$.ajax({
 			  type: "POST",
 			  url: "/api/light/color",
@@ -98,37 +139,58 @@
 			  	"r": 254,
 			  	"g": 239,
 			  	"b": 1
+			  },
+			  complete: function(){			  	
+			  	$button.addClass("pulse");			  	
 			  }			  
 			});			
 		});
 
 
 		$("#ir-ac-on").on("click",function(){
+			$button = $(this);
+			$(this).removeClass("pulse");
+			
 			$.ajax({
 			  type: "POST",
 			  url: "/api/ir",
 			  data: {
 			  	"mode": "IR_AC_ON"
+			  },
+			  complete: function(){			  	
+			  	$button.addClass("pulse");			  	
 			  }			  
 			});			
 		});
 
 		$("#ir-ac-off").on("click",function(){
+			$button = $(this);
+			$(this).removeClass("pulse");
+			
 			$.ajax({
 			  type: "POST",
 			  url: "/api/ir",
 			  data: {
 			  	"mode": "IR_AC_OFF"
+			  },
+			  complete: function(){			  	
+			  	$button.addClass("pulse");			  	
 			  }			  
 			});			
 		});
 		
 		$("#ir-tv-toggle").on("click",function(){
+			$button = $(this);
+			$(this).removeClass("pulse");
+			
 			$.ajax({
 			  type: "POST",
 			  url: "/api/ir",
 			  data: {
 			  	"mode": "IR_TV_TOGGLE"
+			  },
+			  complete: function(){			  	
+			  	$button.addClass("pulse");			  	
 			  }			  
 			});			
 		});

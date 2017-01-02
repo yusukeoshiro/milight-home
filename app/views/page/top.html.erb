@@ -1,8 +1,17 @@
+<style type="text/css">
+	.btn{
+		width: 100%;
+		margin-bottom: 5px;
+	}
+</style>
+
 
 <div class="container">
 
-	<h1>My Home Lighting Controller Panel</h1>
+	<h1>Controller Panel</h1>
 
+
+	<h3>Lights</h3>
 	<button type="button" class="btn btn-primary" id="light-on">Turn On</button>
 	<button type="button" class="btn btn-default" id="light-off">Turn Off</button>
 	<button type="button" class="btn btn-default" id="light-color-default">Default Color</button>
@@ -11,6 +20,12 @@
 	<button type="button" class="btn btn-default" id="light-sexy">Sexy</button>
 	<button type="button" class="btn btn-default" id="light-warm">Warm</button>
 
+	<hr>
+	<h3>IR</h3>
+	<button type="button" class="btn btn-primary" id="ir-ac-on">AC On</button>
+	<button type="button" class="btn btn-default" id="ir-ac-off">AC Off</button>
+	<button type="button" class="btn btn-default" id="ir-tv-toggle">TV Toggle</button>
+	
 
 </div>
 
@@ -86,6 +101,39 @@
 			  }			  
 			});			
 		});
+
+
+		$("#ir-ac-on").on("click",function(){
+			$.ajax({
+			  type: "POST",
+			  url: "/api/ir",
+			  data: {
+			  	"mode": "IR_AC_ON"
+			  }			  
+			});			
+		});
+
+		$("#ir-ac-off").on("click",function(){
+			$.ajax({
+			  type: "POST",
+			  url: "/api/ir",
+			  data: {
+			  	"mode": "IR_AC_OFF"
+			  }			  
+			});			
+		});
+		
+		$("#ir-tv-toggle").on("click",function(){
+			$.ajax({
+			  type: "POST",
+			  url: "/api/ir",
+			  data: {
+			  	"mode": "IR_TV_TOGGLE"
+			  }			  
+			});			
+		});
+
+
 
 	});
 

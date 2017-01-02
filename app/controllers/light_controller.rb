@@ -20,6 +20,11 @@ class LightController < ApplicationController
 		render :json => {}
 	end
 
+	def ir
+		send_ir_signal( params["mode"] )
+		render :json => {}
+	end
+
 
 	def alexa
 		intent = params["request"]["intent"]["name"]

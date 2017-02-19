@@ -33,6 +33,7 @@ class LightController < ApplicationController
 
 		when "TurnOnLight"
 			$bridge.all_on
+			sleep(1)
 			$bridge.brightness(25)			
 			render :json => alexa_response("ok, your light is now on!")
 

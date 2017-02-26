@@ -32,9 +32,7 @@ class LightController < ApplicationController
 		case intent
 
 		when "TurnOnLight"
-			$bridge.all_on
-			sleep(1)
-			$bridge.brightness(25)			
+			milight_on_full_brightness
 			render :json => alexa_response("ok, your light is now on!")
 
 		when "TurnOffLight"
@@ -70,8 +68,7 @@ class LightController < ApplicationController
 			$bridge.all_off			
 			render :json => alexa_response( "ok, I've turned off everything!" )			
 		when "TurnOnEverything"
-			$bridge.all_on
-			$bridge.brightness(25)			
+			milight_on_full_brightness
 			send_ir_signal( "IR_AC_ON" )			
 			render :json => alexa_response("Welcome home!")
 
@@ -88,6 +85,14 @@ class LightController < ApplicationController
 	def milight_adjust_brightness( brightness )
 		brightness_tmp = 2 + 25 * (brightness.to_f / 100)
 		$bridge.brightness(brightness_tmp.to_i)
+	end
+
+
+	# turn on the light with maximum brightness
+	def milight_on_full_brightness
+		$bridge.all_on
+		sleep(1)
+		$bridge.brightness(25)			
 	end
 
 	# adjust the color r,g,b accept values between 1 ~ 100
